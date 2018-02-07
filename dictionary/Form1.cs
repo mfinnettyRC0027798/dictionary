@@ -23,10 +23,21 @@ namespace dictionary
             {"Mm", 1e6 },
             {"Gm", 1e9 },
         };
+        Dictionary<string, double> areas = new Dictionary<string, double>()
+        {
+            {"nm²", 1e-18 },
+            {"µm²", 1e-12 },
+            {"mm²", 1e-6 },
+            {"cm²", 1e-4 },
+            {"m²", 1 },
+            {"km²", 1e6 },
+            {"Mm²", 1e12 },
+            {"Gm²", 1e18 },
+        };
         public Form1()
         {
             InitializeComponent();
-            foreach (string k in prefixes.Keys)
+            foreach (string k in areas.Keys)
             {
                 comboBox1.Items.Add(k);
                 comboBox2.Items.Add(k);
@@ -41,7 +52,7 @@ namespace dictionary
             try
             {
                 double d = double.Parse(textBox1.Text);
-                double d2 = d * prefixes[comboBox1.Text] / prefixes[comboBox2.Text];
+                double d2 = d * areas[comboBox1.Text] / areas[comboBox2.Text];
                 label1.Text = d2.ToString();
             }
             catch
